@@ -121,10 +121,10 @@ DECLARE AN INTEGER VARIABLE a    // a is the value of the first number
 DECLARE AN INTEGER VARIABLE b    // b is the value of the second number
 DECLARE AN INTEGER VARIABLE sum  // sum is the sum between a and b
 
-PRINT ("INPUT NUMEBR 1: ")       // Outputs the message  "INPUT NUMEBR 1: " and waits for the user to input a value.
+PRINT ("INPUT NUMEBR 1: ")       // Outputs the message  "INPUT NUMEBR 1: ".
 INPUT a                          // The value passed is stored in a variable
 
-PRINT ("INPUT NUMEBR 2: ")       // Outputs the message  "INPUT NUMEBR 2: " and waits for the user to input a value.
+PRINT ("INPUT NUMEBR 2: ")       // Outputs the message  "INPUT NUMEBR 2: "
 INPUT b                          // The value passed is stored in b variable
 
 sum <- a + b                     // The sum between a and b is store in the sum variable
@@ -143,11 +143,11 @@ PRINT ("ENTER A NUMBER: ")           // The program outputs the message "ENTER A
 INPUT num                            // The value passed is stored in num variable
  
 IF num > 0 THEN                      // The program checks if "num" is greater than zero.
-  PRINT ("GIVEN NUMBER IS POSITIVE"  // If "num" is greater than zero, and outputs the message "GIVEN NUMBER IS POSITIVE".
+  PRINT ("GIVEN NUMBER IS POSITIVE"  // If checks, and outputs the message "GIVEN NUMBER IS POSITIVE".
 ELSE IF num < 0 THEN                 // If the first condition wasn't accomplish the program checks if "num" is less than zero
-  PRINT ("GIVEN NUMBER IS NEGATIVE"  // If "num" is less than zero, and the message "GIVEN NUMBER IS NEGATIVE".
+  PRINT ("GIVEN NUMBER IS NEGATIVE"  // If checks, and the message "GIVEN NUMBER IS NEGATIVE".
 ELSE                                 // If none of the conditions were accomplish the program do following command
-  PRINT ("GIVEN NUMBER IS ZERO")     // If "num" is equal to zero, and outputs the message "GIVEN NUMBER IS ZERO".
+  PRINT ("GIVEN NUMBER IS ZERO")     // Outputs the message "GIVEN NUMBER IS ZERO".
 ENDIF
 END
 ```
