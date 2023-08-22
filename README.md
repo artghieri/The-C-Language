@@ -121,10 +121,10 @@ DECLARE AN INTEGER VARIABLE a    // a is the value of the first number
 DECLARE AN INTEGER VARIABLE b    // b is the value of the second number
 DECLARE AN INTEGER VARIABLE sum  // sum is the sum between a and b
 
-PRINT ("INPUT NUMEBR 1: ")       // Outputs the message  "INPUT NUMEBR 1: ".
+PRINT ("INPUT NUMEBR 1: ")       // The program outputs the message  "INPUT NUMEBR 1: ".
 INPUT a                          // The value passed is stored in a variable
 
-PRINT ("INPUT NUMEBR 2: ")       // Outputs the message  "INPUT NUMEBR 2: "
+PRINT ("INPUT NUMEBR 2: ")       // The program outputs the message  "INPUT NUMEBR 2: "
 INPUT b                          // The value passed is stored in b variable
 
 sum <- a + b                     // The sum between a and b is store in the sum variable
@@ -145,9 +145,9 @@ INPUT num                            // The value passed is stored in num variab
 IF num > 0 THEN                      // The program checks if "num" is greater than zero.
   PRINT ("GIVEN NUMBER IS POSITIVE"  // If checks, outputs the message "GIVEN NUMBER IS POSITIVE".
 ELSE IF num < 0 THEN                 // The program checks if "num" is less than zero
-  PRINT ("GIVEN NUMBER IS NEGATIVE"  // If checks, and the message "GIVEN NUMBER IS NEGATIVE".
-ELSE                                 // If neither condition were check the program do the following command
-  PRINT ("GIVEN NUMBER IS ZERO")     // Outputs the message "GIVEN NUMBER IS ZERO".
+  PRINT ("GIVEN NUMBER IS NEGATIVE"  // If checks, outputs the message "GIVEN NUMBER IS NEGATIVE".
+ELSE                                 // If neither condition checked the program do the following command
+  PRINT ("GIVEN NUMBER IS ZERO")     // The program outputs the message "GIVEN NUMBER IS ZERO".
 ENDIF
 END
 ```
