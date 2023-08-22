@@ -144,9 +144,9 @@ INPUT num                            // The value passed is stored in num variab
  
 IF num > 0 THEN                      // The program checks if "num" is greater than zero.
   PRINT ("GIVEN NUMBER IS POSITIVE"  // If checks, and outputs the message "GIVEN NUMBER IS POSITIVE".
-ELSE IF num < 0 THEN                 // If the first condition wasn't accomplish the program checks if "num" is less than zero
+ELSE IF num < 0 THEN                 // If the first condition is false the program checks if "num" is less than zero
   PRINT ("GIVEN NUMBER IS NEGATIVE"  // If checks, and the message "GIVEN NUMBER IS NEGATIVE".
-ELSE                                 // If none of the conditions were accomplish the program do following command
+ELSE                                 // If neither condition were check the program do the following command
   PRINT ("GIVEN NUMBER IS ZERO")     // Outputs the message "GIVEN NUMBER IS ZERO".
 ENDIF
 END
