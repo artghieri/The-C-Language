@@ -143,8 +143,8 @@ PRINT ("ENTER A NUMBER: ")           // The program outputs the message "ENTER A
 INPUT num                            // The value passed is stored in num variable
  
 IF num > 0 THEN                      // The program checks if "num" is greater than zero.
-  PRINT ("GIVEN NUMBER IS POSITIVE"  // If checks, and outputs the message "GIVEN NUMBER IS POSITIVE".
-ELSE IF num < 0 THEN                 // If the first condition is false the program checks if "num" is less than zero
+  PRINT ("GIVEN NUMBER IS POSITIVE"  // If checks, outputs the message "GIVEN NUMBER IS POSITIVE".
+ELSE IF num < 0 THEN                 // The program checks if "num" is less than zero
   PRINT ("GIVEN NUMBER IS NEGATIVE"  // If checks, and the message "GIVEN NUMBER IS NEGATIVE".
 ELSE                                 // If neither condition were check the program do the following command
   PRINT ("GIVEN NUMBER IS ZERO")     // Outputs the message "GIVEN NUMBER IS ZERO".
