@@ -1,6 +1,6 @@
 ## Introduction
 
-We will explore the language's historical evolution, its applications and relevance, the intricate compilation process, and fundamental programming concepts that are shared across many of the most popular programming languages.
+We will go over the language's historical evolution, its applications and relevance, the intricate compilation process, and fundamental programming concepts that are shared across many of the most popular programming languages.
 
 Although this isn't an exhaustive guide, it provides a panoramic overview, offering coding novices a high-level understanding of pivotal C concepts. While each programming language possesses unique syntax and methodologies, a solid grasp of these universal principles will undoubtedly enhance your coding journey and facilitate the assimilation of new technologies in the future.
 
