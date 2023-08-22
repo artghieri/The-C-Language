@@ -117,18 +117,18 @@ there are no strict rules, but always try to reduce ambiguity between what you a
 #### Add Two Numbers
 ```julia
 BEGIN
-DECLARE AN INTEGER VARIABLE a       // a is the value of the first number
-DECLARE AN INTEGER VARIABLE b       // b is the value of the second number
-DECLARE AN INTEGER VARIABLE sum     // sum is the sum between a and b
+DECLARE AN INTEGER VARIABLE a    // a is the value of the first number
+DECLARE AN INTEGER VARIABLE b    // b is the value of the second number
+DECLARE AN INTEGER VARIABLE sum  // sum is the sum between a and b
 
-PRINT ("INPUT NUMEBR 1: ")          // The program outputs the message  "INPUT NUMEBR 1: " and waits for the user to input a value.
-INPUT a                             // The value passed is stored in a variable
+PRINT ("INPUT NUMEBR 1: ")       // Outputs the message  "INPUT NUMEBR 1: " and waits for the user to input a value.
+INPUT a                          // The value passed is stored in a variable
 
-PRINT ("INPUT NUMEBR 2: ")          // The program outputs the message  "INPUT NUMEBR 2: " and waits for the user to input a value.
-INPUT b                             // The value passed is stored in b variable
+PRINT ("INPUT NUMEBR 2: ")       // Outputs the message  "INPUT NUMEBR 2: " and waits for the user to input a value.
+INPUT b                          // The value passed is stored in b variable
 
-sum <- a + b                        // The sum between a and b is store in the sum variable
-PRINT sum                           // The program outputs the determined result
+sum <- a + b                     // The sum between a and b is store in the sum variable
+PRINT sum                        // The program outputs the determined result
 END
 ```
 > ***This pseudocode describes a program that takes two numbers as input from the user, adds them together and outputs the sum.***
@@ -137,17 +137,17 @@ END
 
 ```julia
 BEGIN
-DECLARE AN INTEGER NUMBER num         // num is the value of the given number 
+DECLARE AN INTEGER NUMBER num        // num is the value of the given number 
  
-PRINT ("ENTER A NUMBER: ")            // The program outputs the message "ENTER A NUMBER: ".
-INPUT num                             // The value passed is stored in num variable
+PRINT ("ENTER A NUMBER: ")           // The program outputs the message "ENTER A NUMBER: ".
+INPUT num                            // The value passed is stored in num variable
  
-IF num > 0 THEN                       // The program checks if "num" is greater than zero.
-  PRINT ("GIVEN NUMBER IS POSITIVE")  // If "num" is greater than zero, the program outputs the message "GIVEN NUMBER IS POSITIVE".
-ELSE IF num < 0 THEN                  // If the first condition wasn't accomplish the program checks if "num" is less than zero
-  PRINT ("GIVEN NUMBER IS NEGATIVE")  // If "num" is less than zero, the program outputs the message "GIVEN NUMBER IS NEGATIVE".
-ELSE                                  // If none of the conditions were accomplish the program do following command
-  PRINT ("GIVEN NUMBER IS ZERO")      // If "num" is equal to zero, the program outputs the message "GIVEN NUMBER IS ZERO".
+IF num > 0 THEN                      // The program checks if "num" is greater than zero.
+  PRINT ("GIVEN NUMBER IS POSITIVE"  // If "num" is greater than zero, and outputs the message "GIVEN NUMBER IS POSITIVE".
+ELSE IF num < 0 THEN                 // If the first condition wasn't accomplish the program checks if "num" is less than zero
+  PRINT ("GIVEN NUMBER IS NEGATIVE"  // If "num" is less than zero, and the message "GIVEN NUMBER IS NEGATIVE".
+ELSE                                 // If none of the conditions were accomplish the program do following command
+  PRINT ("GIVEN NUMBER IS ZERO")     // If "num" is equal to zero, and outputs the message "GIVEN NUMBER IS ZERO".
 ENDIF
 END
 ```
