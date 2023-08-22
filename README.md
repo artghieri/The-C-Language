@@ -1,16 +1,14 @@
 ## Introduction
 
+We will explore the language's historical evolution, its applications and relevance, the intricate compilation process, and fundamental programming concepts that are shared across many of the most popular programming languages.
 
-
-This handbook does not try to cover everything under the sun related to C. It focuses on the core of the language, trying to simplify the more complex topics.
-
-This is a guide for students by a student. Happy Coding!
+Although this isn't an exhaustive guide, it provides a panoramic overview, offering coding novices a high-level understanding of pivotal C concepts. While each programming language possesses unique syntax and methodologies, a solid grasp of these universal principles will undoubtedly enhance your coding journey and facilitate the assimilation of new technologies in the future.
 
 ## Computational Thinking
 
 > *"Solving human's problems by analisis and system conception that simulate human behavior against that problem."*
 
-That was a phrase that i heard from a incredible teacher in my first year of **Computer Engineer** in **Universidade de São Paulo (USP)**. And it was a really time changer in my mentality as a student.
+That was a phrase that i heard from a incredible teacher in my first year of **Computer Engineer** in **Universidade de São Paulo (USP)**, and it really changed my mentality as a student.
 
 Computational Thinking is a *problem-solving* technique that imitates the process computer programmers go through when writing computer programmes and algorithms. This process requires programmers to break down complex problems and scenarios into bite size pieces that can be fully understood in order to then develop solutions that are clear to both computers and humans. 
 
@@ -174,7 +172,7 @@ erDiagram
   PROGRAMMING-LANGUAGE ||--|{ LOW-LEVEL : " "
 ```
 
-> ***A middle-level programming lies between the low-level and high-leve programming language. It's advantages are that it supports the features of high-level programming, it is a user-friendly language, and closely related to machine language and human language.***
+> ***A middle-level programming lies between the low-level and high-level programming language. It's advantages are that it supports the features of high-level programming, it is a user-friendly language, and closely related to machine language and human language.***
 
 #
 
@@ -209,7 +207,7 @@ flowchart LR
 
 ## Introduction To C Language
 
-C is a general-purpose computer programming language. It was created in the 1970s by *Dennis Ritchie*, and remains very widely used and influential. By design, C's features cleanly reflect the capabilities of the targeted CPUs. C is commonly used on computer architectures that range from the largest supercomputers to the smallest microcontrollers and embedded systems.
+Created in the 1970s by *Dennis Ritchie*, the c language remains very widely used and influential. By design, C's features cleanly reflect the capabilities of the targeted CPUs. C is commonly used on computer architectures that range from the largest supercomputers to the smallest microcontrollers and embedded systems.
 
 C is an imperative procedural language, supporting structured programming, lexical variable scope and recursion, with a static type system. It was designed to be compiled to provide low-level access to memory and language constructs that map efficiently to machine instructions, all with minimal runtime support.
 
@@ -223,3 +221,5 @@ int main(int argv, char *argc[])
   return 0;
 }
 ``` 
+
+---
