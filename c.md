@@ -43,7 +43,7 @@ The purpose of specifying the variable type to our compiler (virtual machine) fo
 Thus, by indicating the variable *data type* we will work with, our machine will allocate a space of a specific size so that this variable - *access key* - can have a value *assigned* to it.
 
 > [!NOTE]
-> *You use the `=` or assignment operator to assign a value to a variable.*
+> *Use the `=` or assignment operator to assign a value to a variable.*
 
 #
 
@@ -82,7 +82,7 @@ We don't need to specify or assign a value immediately to all the variables we d
 
 int main(int argc, char *argv[])
 {
-  int age = 30; // int n = 30; is initializing the variable. It refers to assigning an initial value which we can change later.
+  int age = 30; // int n = 30; is initializing the variable. It refers to assigning an initial value.
   return 0;
 }
 ```
@@ -166,8 +166,8 @@ In general, `const` is a better option if we have a choice and it can be success
 
 int main(int argv, char *argc[])
 {
-    printf("%d", MULTIPLY(2+3, 3+5)); // The macro is expanded as 2 + 3 * 3 + 5, not as 5*8
-    return 0;
+  printf("%d", MULTIPLY(2+3, 3+5)); // The macro is expanded as 2 + 3 * 3 + 5, not as 5*8
+  return 0;
 }
 ```
 
@@ -179,11 +179,11 @@ int main(int argv, char *argc[])
 
 int main(int argv, char *argc[])
 {
-   printf("%d", LIMIT);
-   #undef LIMIT          // Removing defined macro LIMIT
+  printf("%d", LIMIT);
+  #undef LIMIT          // Removing defined macro LIMIT
   
-   printf("%d", LIMIT);   // This line causes error as LIMIT is not defined
-   return 0;
+  printf("%d", LIMIT);   // This line causes error as LIMIT is not defined
+  return 0;
 }
 ```
 
@@ -191,46 +191,112 @@ int main(int argv, char *argc[])
 
 ## Data Types
 
+
+---
+
+## Operators
+
+C features an extensive set of operators that can be used in the manipulation of variables and constants during program execution.
+
 ### Arithmetic Operators
 
 Arithmetic operators are mathematical operators that perform mathematical functions on numbers. 
 
-| Operator        | Finality                 |
-| ---             | ---                      |
-| `+`             | Addition Operator        | 
-| `-`             | Subtraction Operator     | 
-| `*`             | Multiplication Operator  | 
-| `**`            | Power Operator           | 
-| `/`             | Division Operator         | 
-| `%`             | Modulo Division Operator(calculating the remainder of the division)  | 
+* `+`  - **Addition Operator**
+* `-`  - **Subtraction Operator**
+* `*`  - **Multiplication Operator**
+* `**` - **Power Operator**
+* `/`  - **Division Operator**
+* `%`  - **Modulo Division Operator**
 
-> [!IMPORTANT]
-> **A particularity of C relates to the fact that the value returned by an *arithmetic expression* is always of the largest data type used in the expression.**
+A particularity of C relates to the fact that the value returned by an *arithmetic expression* is always of the largest *data type* used in the expression.
+
+#### Example: Division by INTEGER and FLOAT Numbers.
 
 ```c
 #include <stdio.h>
 
 int main(int argv, char *argc[])
 {
-    int a = 2;
-    float b = 3.3;
-    
-    printf("%f", (a / b));
+  int n1 = 2;
+  float n2 = 3.3;
 
-    return 0;
+  // We are instructing the program to print an integer value resulting from a division involving a real number
+  // which results an error.
+  printf("%d", (a / b) );
+
+  // The program will print correctly because it has been instructed to print the result within the realm of real numbers.
+  printf("%f", (a / b) );
+  return 0;
 }
 ```
 
+> [!NOTE]
+> It is possible to cast the result of some operations, which will be approached later.
+
+### Increment and Decrement Operators
+
+The C language allows the use of the unary operators "++" and "--" to *increment* (add 1) or *decrement* (subtract 1) the value of a variable, respectively.
+```julia
+++X          // X = X + 1 
+X++          // X = X + 1
+
+--X          // X = X - 1 
+X--          // X = X - 1 
+```
+As you can see, these operators can be either *prefixed* or *postfixed*. The difference is that when they are *prefixed*, they increment the variable before using its value. When they are *postfixed*, they use the value of the variable before incrementing it.
+
+#### Example: PostFixed
+```julia
+int a, b;
+
+a = 10;
+b = a++;
+
+FINAL RESULT: a = 11; b = 10;
+```
+
+```mermaid
 ---
+title: TIMELINE FOR EACH VARIABLE
+---
+stateDiagram
+  direction LR
+  [*] --> a
+  a --> a=10: a = 10
+  a=10 --> a=11: b = a++
 
-## Operators
+  [*] --> b
+  b --> "
+  " -->  b=10: b = a++
+```
 
-C features an extensive set of operators that can be used in the manipulation of variables and constants during program execution
+#### Example: PreFixed
+```julia
+int a, b;
 
-### A
+a = 10;
+b = ++a;
+
+FINAL RESULT: a = 11; b = 11;
+```
+
+```mermaid
+---
+title: TIMELINE FOR EACH VARIABLE
+---
+stateDiagram
+  direction LR
+  [*] --> a
+  a --> a=10: a = 10
+  a=10 --> a=11: b = ++a
+
+  [*] --> b
+  b --> "
+  " -->  b=10: b = a++
+```
 
 Operators
-  Arithmetic operators
   Assignment operator
   Logical operators
   Comparison operators
