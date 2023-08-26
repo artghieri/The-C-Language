@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
   return 0;
 }
 ```
-> ***In this example was declared three integer data type variables which were used to store three values: a, b and sum.***
+> *In this example was declared three integer data type variables which were used to store three values: a, b and sum.*
 
 #
 
@@ -118,11 +118,11 @@ The scope of a variable refers to where the variable can be referenced and acces
 
 **Local Scope:** If a variable is declared within a set of culry braces, {}, that will be its scope and we can't access it and use it outside those braces in the rest of the program. 
 
-> ***Therefore it is not a good idea to declare variables that way since their scope and use is so limited which can lead to errors. This scope is called local scope.***
+> *Therefore it is not a good idea to declare variables that way since their scope and use is so limited which can lead to errors. This scope is called local scope.*
 
 **Global Scope:** If variables are declared outside of functions, they have global scope. Having a global scope means they are visible within the whole program and can be accessed from anywhere.
 
-> ***But keep in mind that it can be difficult to keep track of them. Also, any changes we make to them along the way can get confusing since they can happen in any part and location of the program.***
+> *But keep in mind that it can be difficult to keep track of them. Also, any changes we make to them along the way can get confusing since they can happen in any part and location of the program.*
 
 ```c
 #include <stdio.h>
@@ -171,7 +171,7 @@ int main(int argv, char *argc[])
 }
 ```
 
-> ***We can also remove previously defined macros using `#undef MACRO_NAME`*** 
+> *We can also remove previously defined macros using `#undef MACRO_NAME`*
 
 ```c
 #include <stdio.h>
@@ -312,7 +312,9 @@ Reduced expressions are applied in cases where the same variable is on both side
 
 > *Note that this type of expression is very useful for manipulating counting variables and/or accumulators.*
 
-## Relational Operators 
+#
+
+### Relational Operators 
 
 Relational operators perform comparisons between expressions, their results are always logical values - *false* equals to 0 and *true* equals to 1.
 
@@ -325,8 +327,21 @@ Relational operators perform comparisons between expressions, their results are 
 | `<=`          | **LESS THAN OR EQUAL TO**     |
 | `!=`          | **NOT EQUAL TO**     |
 
+#### Example:
+```julia
+int a = 10;
+int b = 5;
 
-## Logical Operators
+a == b (false)
+
+a != b (true)
+```
+
+> *When using any relational operator, there is always a return value that can either be true or false, otherwsie knokn as a **Boolean** value in the context of computer programming.*
+
+#
+
+### Logical Operators
 
 Logical operators can be used to combine two or more relational operations into a single conditional test (binary operators AND and OR) or modify the result of a relational operation (unary operator NOT).
 
@@ -356,7 +371,7 @@ int main(int argc, char *argv[])
   return 0;
 }
 ```
-> ***Operands on both the left and right sides of && need to be true for the condition to be true.***
+> *Operands on **both** the left and right sides of && need to be **true** for the condition to be true.*
 
 #### Example: Integer Numbers Greater Than Zero
 ```c
@@ -373,7 +388,7 @@ int main(int argc, char *argv[])
   return 0;
 }
 ```
-> ***At least one or both of the operands on the right and left sides of || need to be true for the condition to be true.***
+> *At least one or **both** of the operands on the right and left sides of || need to be **true** for the condition to be true.*
 
 
 #### Example: Even Number
@@ -391,10 +406,11 @@ int main(int argc, char *argv[])
   return 0;
 }
 ```
-> ***This inverts the value of the operand. If an operand is true, then the NOT operator makes the condition false and vice versa.***
+> *This **inverts** the value of the operand. If an operand is true, then the NOT operator makes the condition false and vice versa.*
 
+#
 
-## Ternary Operator 
+### Ternary Operator 
 
 The ternary operator `?` allows for conditional value assignment to a variable.
 
