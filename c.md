@@ -232,7 +232,9 @@ int main(int argv, char *argc[])
 ```
 
 > [!NOTE]
-> It is possible to cast the result of some operations, which will be approached later.
+> **It is possible to cast the result of some operations, which will be approached later.**
+
+#
 
 ### Increment and Decrement Operators
 
@@ -267,8 +269,7 @@ stateDiagram
   a=10 --> a=11: b = a++
 
   [*] --> b
-  b --> "
-  " -->  b=10: b = a++
+  b --> b=10: b = a++
 ```
 
 #### Example: PreFixed
@@ -292,9 +293,140 @@ stateDiagram
   a=10 --> a=11: b = ++a
 
   [*] --> b
-  b --> "
-  " -->  b=10: b = a++
+  b --> b=11: b = ++a
 ```
+
+#
+
+### Reduced Expressions
+
+Reduced expressions are applied in cases where the same variable is on both sides of the assignment statement. 
+
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**REDUCED EXPRESSION**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**NORMAL EXPRESSION**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+| :---:                | :---:               |
+| **A += 5**          | **A = A + 5**       |
+| **B - = 2**        | **B = B – 2**      |
+| **C** ***=** **2**           | **C = C * 2**       |
+| **D /= 7**           | **D = D / 7**      |
+| **E %= 3**           | **E = E % 3**        |
+
+> *Note that this type of expression is very useful for manipulating counting variables and/or accumulators.*
+
+## Relational Operators 
+
+Relational operators perform comparisons between expressions, their results are always logical values - *false* equals to 0 and *true* equals to 1.
+
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**OPERATOR**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**MEANING**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+| :---:                | :---:               |
+| `==`         | **EQUAL TO**    |
+| `>`         | **GREATER THAN**      |
+| `<`          | **LESS THAN**     |
+| `>=`          | **GREATER THAN OR EQUAL TO**     |
+| `<=`          | **LESS THAN OR EQUAL TO**     |
+| `!=`          | **NOT EQUAL TO**     |
+
+
+## Logical Operators
+
+Logical operators can be used to combine two or more relational operations into a single conditional test (binary operators AND and OR) or modify the result of a relational operation (unary operator NOT).
+
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**OPERATOR**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**MEANING**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+| :---:                | :---:               |
+| `&&`         | **AND**    |
+| `\|\|`       | **OR**      |
+| `!`          | **NOT**     |
+
+
+#### Example: Duple Conditional Test
+```c
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+  int a, b, r;
+  
+  a = 10;
+  b = 2;
+  
+  if ( (b > 0) && (b % 2 == 0) ) 
+  {
+      r = a / b;
+      printf("%s%d", "b is even, result: ", r);
+  }
+  return 0;
+}
+```
+> ***Operands on both the left and right sides of && need to be true for the condition to be true.***
+
+#### Example: Integer Numbers Greater Than Zero
+```c
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+  int a;
+  
+  a = 3;
+  
+  if ( (a < 0) || (a == 0) )
+    printf("%s", "Only integer numbers greater than zero"); 
+  return 0;
+}
+```
+> ***At least one or both of the operands on the right and left sides of || need to be true for the condition to be true.***
+
+
+#### Example: Even Number
+```c
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+  int a;
+
+  a = 2;
+    
+  if ( !(a % 2 != 0) ) 
+    printf("%s", "Even");
+  return 0;
+}
+```
+> ***This inverts the value of the operand. If an operand is true, then the NOT operator makes the condition false and vice versa.***
+
+
+## Ternary Operator 
+
+The ternary operator `?` allows for conditional value assignment to a variable.
+
+```julia
+variable = condition ? expression1 (true) : expression2; (false)
+```
+
+In this structure, the condition is tested, and if it's **true**, *expression1* is taken; otherwise, *expression2* is adopted. To exemplify its usage, here's a snippet of a program that assigns the variable Z the greater value between variables A and B.
+
+```julia
+Z = (A > B) ? A : B;
+```
+
+Another way to write this command would be:
+
+```julia
+if (A > B)
+  Z = A;
+else
+  Z = B;
+```
+
+
+
+## CONVERSÃO ENTRE TIPOS DE DADOS 
+
+
+#
+
+#
+
+
 
 Operators
   Assignment operator
