@@ -6,6 +6,35 @@ In this guide, we will delve deep into the key topics encompassing the C languag
 
 ---
 
+## Directives
+
+During the creation of the *source code*, in addition to regular commands, programmers can use compilation directives. Directives are readily recognized as they often appear at the beginning of source files, starting with the *prefix* `#` followed by the *directive name and its arguments*.
+
+An important example is the `include` directive, which allows you to include the content of another file in the source code. This directive enables the use of inclusion files created by the user or provided with the compiler - typically header files with the ".h" extension.
+
+```c
+#include <stdio.h>     // searches for the "stdio.h" file primarily in the include directory (default: C:\TC\INCLUDE).
+
+```
+
+```c
+#include "stdio.h"     // searches for the "stdio.h" file primarily in the working directory.
+```
+
+> *Regardless of the form used, this command instructs the preprocessor to include the content of the "stdio.h" file as an integral part of the source code file, exactly at that point. This action doesn't physically affect the source code file.*
+
+The table below presents some of the most commonly used header files that can be utilized in program development.
+
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File Inclusion**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Description**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+|:---:| :---: |
+| *#include <stdio.h>* | Provides input and output functions |
+| *#include <stdlib.h>* | Provides memory allocation and conversion functions |
+| *#include <math.h>* | Provides mathematical functions |
+| *#include <string.h>* | Provides string manipulation functions |
+| *#include <time.h>* | Provides functions to work with time and dates |
+| *#include <stdbool.h>* | Provides the bool type and true/false constants |
+
+
 ## Variables
 
 Variables hold and point to a value. They act as a *reference* or *abstraction* to literal data. That data is stored in the computer's memory, and takes up an certain amount of space, so we can retrieve it later and use when we need to.
@@ -30,7 +59,7 @@ int main(int argc, char *argv[])
   return 0;
 }
 ```
-> *In this example was declared three integer data type variables which were used to store three values: a, b and sum.*
+> *In this example was declared three integer data type variables - a, b and sum - which were used to store three values*
 
 #
 
@@ -557,20 +586,372 @@ Operator precedence defines the order in which operators are evaluated in an exp
 | Conditional	    |   ?:	                                | Right to left     | 
 | Assignment	    |   = += -= *= /= %=>>= <<= &= ^= \|=	  | Right to left     | 
 
-Here, operators with the highest precedence appear at the top of the table, those with the lowest appear at the bottom. Within an expression, higher precedence operators will be evaluated first.
+> *Here, operators with the highest precedence appear at the top of the table, those with the lowest appear at the bottom. Within an expression, higher precedence operators will be evaluated first.*
+
+## Input and Output Commands
+
+Data input and output are essential pillars in programming, enabling interaction between programs and users, as well as communication with the external environment. This dynamic allows for acquiring crucial information and presenting processed results.
+
+### Output of Data
+
+The `printf()` function enables the *output* of values (constants, variables, or expression results). This function converts and prints its *arguments* to the standard output following the format specified in the *control string*.
+
+```c
+printf("control string", arguments);
+```
+
+The *control string*, describes everything that the function will display on the screen. This string not only shows the characters that will be presented but also the respective formats and positions of constants, variables, and expressions listed in the argument list.
+
+```c
+int a, b, sum;
+
+a = 2;
+b = 3;
+
+sum = a + b;
+printf("%s %d %s %d %s %d", "The sum between the numbers:", a, "and", b, "is equals to", sum);
+```
+
+In summary, the control string consists of three types of characters:
+
+- **Miscellaneous characters** that will be displayed on the screen (corresponding to the text to be shown).
+- **Escape characters "\\"** used to assist in cursor movement on the screen or carriage movement.
+- **Format specifier characters "%"** that define the position and manner in which each of the variables in the argument list will be displayed.
 
 
+|    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Specifier** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   |     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Type**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     |         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Example**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;              |       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Output**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       |
+|:-----------------:|:-------------------:|:---------------------------------:|:----------------------:|
+|       **%c**      |     Character       |       `printf("%c", 'A');`          |           A            |
+|       **%d**      |      Integer        |       `printf("%d", 42);`           |           42           |
+|       **%f**      |  Floating point     |      `printf("%f", 3.14);`          |        3.140000       |
+|      **%lf**      |       Double        |   `printf("%lf", 1.618);`           |        1.618000       |
+|       **%o**      |       Octal         |        `printf("%o", 8);`           |           10           |
+|       **%p**      |      Pointer        | `int var = 5; printf("%p", &var);`  |    Memory address     |
+|       **%s**      |       String        | `printf("%s", "Hello");`            |         Hello         |
+|       **%u**      | Unsigned integer    |     `printf("%u", -42);`            | Unpredictable value   |
+|   **%x or %X**    |   Hexadecimal       |     `printf("%x", 255);`            |           ff           |
+|       **%%**      | Percent symbol      |         `printf("%%");`             |           %            |
 
-
+> *In the table above, there are Some Format Specifiers for the printf() Function, followed by practical examples.*
 
 #
 
+### Input of Data
+
+The `scanf()` function reads characters from the *standard input*, interprets them according to the format specification, and stores the results in variables declared in the program.
+
+```c
+scanf("control string", list of memory addresses of variables);
+```
+
+The *memory address* representation of the variables that will *receive the input data is provided* using the `&` operator *followed by the variable name*. Additionally, this function also uses escape control characters via backslash codesand formatting characters `%`.
+
+```c
+int number;
+
+scanf("%d", &number);   // The scanf() function reads the typed number and stores it in the number variable as an integer.
+```
+
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Specifier**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Description**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                          |  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Example**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+|:-----------------:|:-------------------:|:---------------------------------:|
+| %d        | Read an integer                        | `scanf("%d", &num);`            |
+| %f        | Read a floating-point number            | `scanf("%f", &floatValue);`     |
+| %c        | Read a character                       | `scanf("%c", &letter);`         |
+| %s        | Read a string                          | `scanf("%s", stringVar);`       |
+| %lf       | Read a double (long float)             | `scanf("%lf", &doubleValue);`   |
+| %x        | Read a hexadecimal integer            | `scanf("%x", &hexValue);`       |
+| %o        | Read an octal integer                  | `scanf("%o", &octValue);`       |
+| %u        | Read an unsigned integer               | `scanf("%u", &unsignedValue);`  |
+
+> *These format specifiers are used with the scanf() function to read data from the standard input.*
+
+## Conditional Statements
+
+Conditional Statements in programming enable the program to make decisions and execute specific code blocks based on certain conditions, enhancing its flexibility and adaptability.
+
+### Conditional Statements and Truth Tables
+
+Conditional Statements in programming enable diverse execution paths based on logical conditions using "if," "else if," and "else" statements. Utilizing truth tables to evaluate conditions, they systematically ensure precise decision-making, enhancing program functionality and reliability.
+
+```c
+int number = 10;
+
+if ( number > 0 )
+  printf("%s", "It's a positive number");
+```
+
+Boolean expressions are essential in programming, denoting true/false conditions. They employ logical operators (AND, OR, NOT) to combine or negate conditions, enabling intricate decision-making in code. Evaluating these expressions empowers programs to execute tailored actions based on outcomes, optimizing efficiency and functionality.
+
+> *Any result from a comparison that is a non-zero value is treated as true, whereas 0 is interpreted as false.*
+
+<table>
+<tr><th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TRUTH TABLE FOR && &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TRUTH TABLE FOR ||&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th></tr>
+<tr><td>
+  
+| &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Operand 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Operand 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Result (&&)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+|:-----------:|:-----------:|:-------------:|
+|   false   |   false   |    false    |
+|   false   |   true    |    false    |
+|   true    |   false   |    false    |
+|   true    |   true    |     true    |
+
+</td><td>
+
+| &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Operand 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Operand 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Result (\|\|)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+|:-----------:|:-----------:|:-------------:|
+|   false   |   false   |    false    |
+|   false   |   true    |     true    |
+|   true    |   false   |     true    |
+|   true    |   true    |     true    |
+
+</td></tr> </table>
+
+</td><td>
+
+#
+
+### If Statement 
+
+The `if` statement is the *primary decision-making* command in C programming. It evaluates the specified condition and, if the condition is true (non-zero), the program executes the following code block. If the condition is false*(equal to zero), the code block is not executed.
+```c
+if (condition)
+{
+  code block;
+}
+```
+> *The code block should be delimited by an opening curly brace and a closing curly brace. However, if the block consists of only a single command, the curly braces become optional and can be omitted.*
+
+#### Example: Negative Numbers
+```c
+#include <stdio.h>
+int main (int argc, char *argv[])
+{
+  int a, b;
+  
+  scanf("%d %d", &a, &b);
+  if ( (a < 0) && (b < 0) )
+   printf("%s\n", "Both numbers are negative");
+  return 0;
+}
+```
+
+#
+
+### Else Statement
+
+Including the `else` clause allows a second code block to be executed if the condition tested by the `if` statement is false (equal to zero).
+
+```c
+if (condition) {
+    // Code block 1; Executed when the condition is true
+} else {
+    // Code block 2; Executed when the condition is false
+}
+```
+
+#### Example: Is Even Number
+```c
+#include <stdio.h>
+
+int main (int argc, char *argv[])
+{
+  int number;
+
+  scanf("%d", &number);
+
+  if ( number % 2 == 0 )
+    printf("%s", "Even Number");
+  else
+    printf("%s", "Odd Number");
+   return 0;
+}
+```
+
+> *Note that the blocks of commands are indented (line indentation) within their respective structure. While not mandatory, this indentation is crucial for better code clarity, as it visually identifies the beginning and end of each block.*
+
+#
+
+### Nested If Statement 
+
+Nested if statement in C is the nesting of if statement within another if statement and nesting of if statement with an else statement. Once an else statement gets failed there are times when the next execution of statement wants to return a true statement, there we need nesting of if statement to make the entire flow of code in a semantic order. 
+
+```c
+if ( check 1st condition)
+{
+  if ( check 2nd condition){
+    // Verify True statements of 2nd condition;
+  }else{
+    // Verify False statements of 2nd condition;
+  }
+}else{
+  // Verify False statements of 1st condition;
+}
+```
+
+Nested if statement provides better decision making when other conditions are to be analyzed inside the first condition, and so we can include more than one nested if statement inside an if statement to get the required result.
+
+```mermaid
+---
+title: Flowchart
+---
+flowchart TD
+    A{Condition 1} -.-> |True| B{Condition 2}
+    A -.-> |False| C{{Code}}:::vv
+
+    B -.-> |True| D{{Code}}:::vv
+    B -.-> |False| E{{Code}}:::vv
+    classDef vv fill:#CD3700,stroke:#333,stroke-width:4px
+```
+
+#### Example: Analysis of People of Certain Age Groups 
+```c
+#include <stdio.h>
+int main (int argc, char *argv[])
+{
+  int age;
+
+  scanf("%d",&age);
+
+  if ( age < 18 )
+  {
+    printf("Consider as minor \n");
+    printf("Not fit for Working");
+  }
+  else
+  {
+    if (age >= 18 && age <= 50 )
+    {
+      printf("He/She is successfully eligible for Working \n");
+      printf("Fill all the details and apply for it\n");
+    }
+    else
+    {
+      printf("Age is not satisfactory according to the organization norms\n");
+      printf("Ready for retirement and can collect pension \n");
+    }
+  }
+  return 0;
+}
+```
+
+#
+
+### Else If Statement
+
+The "else if" statement is used to create multiple-choice decisions. It functions similarly to the nesting of if statements within the else clauses of higher-level if statements.
+
+```c
+if (condition1) {
+  // block of code to be executed if condition1 is true
+} else if (condition2) {
+  // block of code to be executed if the condition1 is false and condition2 is true
+} else {
+  // block of code to be executed if the condition1 is false and condition2 is false
+}
+```
+
+In this structure, the conditional expressions are evaluated in order, and if any of them is true, the corresponding block of commands will be executed, and the chain will be terminated (no other conditions in the structure will be tested).
+
+#### Example: Positive or Negative Number
+```c
+#include <stdio.h>
+
+int main (int argc, char *argv[])
+{
+  int number = 10; 
+  
+  if (number > 0) 
+    printf("The value is a positive number.");
+  else if (number < 0)
+    printf("The value is a negative number.");
+  else 
+    printf("The value is 0.");
+return 0;
+}
+```
+
+#
+
+### SWITCH  
+
+In a *switch* statement, the computer sequentially compares a variable against a list of constants. If one of the constants described in the case clauses matches the current value of the variable, the computer executes the command or block of commands associated with that option.
+
+This type of structure differs from *if* because it can only test for equality, while *if* can evaluate any type of logical expression.
+
+```c
+switch (variable)
+{
+  case 1:
+    // code block
+    break;
+  case 2:
+    // code block
+    break;
+  (...)
+  default:
+    // code block
+}
+```
+
+> *The conditional variable must be of either int or char data type.*
+
+The *break* command is used to terminate a sequence of commands. Technically, its usage is optional. However, when omitted, the execution will continue with the commands in the next *case* until the computer encounters a *break* or reaches the end of the *switch-case* structure.
+
+The *deafult* clause is also optional and is used to handle cases that do not match any of the conditions tested in the *case* clauses. If not used, no command will be executed if all *case* options fail.
+
+### Example: 
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main (int argc, char *argv[])
+{
+    // switch variable
+    char choice;
+    // operands
+    int x, y;
+ 
+    while (1) {
+        printf("Enter the Operator (+,-,*,/)\nEnter x to "
+               "exit\n");
+        scanf(" %c", &choice);
+ 
+        // for exit
+        if (choice == 'x') {
+            exit(0);
+        }
+ 
+        printf("Enter the two numbers: ");
+        scanf("%d %d", &x, &y);
+ 
+        // switch case with operation for each operator
+        switch (choice) {
+          case '+':
+              printf("%d + %d = %d\n", x, y, x + y);
+              break;
+ 
+          case '-':
+              printf("%d - %d = %d\n", x, y, x - y);
+              break;
+ 
+          case '*':
+              printf("%d * %d = %d\n", x, y, x * y);
+              break;
+          case '/':
+              printf("%d / %d = %d\n", x, y, x / y);
+              break;
+          default:
+              printf("Invalid Operator Input\n");
+        }
+    }
+    return 0;
+}
+```
+#
+
+---
 
 
-Operators
-  Assignment operator
-  Logical operators
-  Comparison operators
 Functions
   Function arguments
   Function outputs
