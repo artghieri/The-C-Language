@@ -906,43 +906,31 @@ The *deafult* clause is also optional and is used to handle cases that do not ma
 
 int main (int argc, char *argv[])
 {
-    // switch variable
     char choice;
-    // operands
     int x, y;
  
-    while (1) {
-        printf("Enter the Operator (+,-,*,/)\nEnter x to "
-               "exit\n");
-        scanf(" %c", &choice);
- 
-        // for exit
-        if (choice == 'x') {
-            exit(0);
-        }
- 
-        printf("Enter the two numbers: ");
-        scanf("%d %d", &x, &y);
- 
-        // switch case with operation for each operator
-        switch (choice) {
-          case '+':
-              printf("%d + %d = %d\n", x, y, x + y);
-              break;
- 
-          case '-':
-              printf("%d - %d = %d\n", x, y, x - y);
-              break;
- 
-          case '*':
-              printf("%d * %d = %d\n", x, y, x * y);
-              break;
-          case '/':
-              printf("%d / %d = %d\n", x, y, x / y);
-              break;
-          default:
-              printf("Invalid Operator Input\n");
-        }
+    printf("Enter the Operator (+,-,*,/)");
+    scanf(" %c", &choice);
+
+    printf("Enter the two numbers: ");
+    scanf("%d %d", &x, &y);
+
+    switch (choice) 
+    {
+      case '+':
+          printf("%d + %d = %d\n", x, y, x + y);
+          break;
+      case '-':
+          printf("%d - %d = %d\n", x, y, x - y);
+          break;
+      case '*':
+          printf("%d * %d = %d\n", x, y, x * y);
+          break;
+      case '/':
+          printf("%d / %d = %d\n", x, y, x / y);
+          break;
+      default:
+          printf("Invalid Operator Input\n");
     }
     return 0;
 }
