@@ -939,8 +939,6 @@ int main (int argc, char *argv[])
 }
 ```
 
-#  
-
 ## Loop Structures
 
 Loop structures are fundamental in C programming as they allow the iterative execution of code blocks based on specific conditions. The C language offers three main loop structures: *for*, *while*, and *do-while*. These structures provide efficiency and flexibility in implementing repetitive logic.
@@ -1037,6 +1035,8 @@ int main(int argc, char *argv[])
   return 0;
 }
 ```
+
+#
 
 ### Loop Structures - For Statement
 
