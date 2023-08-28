@@ -674,10 +674,10 @@ Conditional Statements in programming enable the program to make decisions and e
 Conditional Statements in programming enable diverse execution paths based on logical conditions using "if," "else if," and "else" statements. Utilizing truth tables to evaluate conditions, they systematically ensure precise decision-making, enhancing program functionality and reliability.
 
 ```c
-int number = 10;      //  Initializing an integer variable with 10 value
+int number = 10;    
 
-if ( number > 0 )     //  We are telling the compiler to verify if the value stored in the variable satisfies the given condition.
-  printf("%s", "It's a positive number");  // If true, this line is executed
+if ( number > 0 )   
+  printf("%s", "It's a positive number");  
 ```
 
 > *For a better understanding, when a conditional statement is executed, two possible outcomes are provided: true and false. In the previous case, the compiler substitutes the variable "number" with its stored value, resulting in the following evaluation: "Is 10 greater than 0?" . In this instance, the answer is true. As a result, the compiler returns a value other than 0 to the "if()" function, permitting the execution of the subsequent command line.*
