@@ -621,16 +621,16 @@ In summary, the control string consists of three types of characters:
 
 |    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Specifier** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   |     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Type**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     |         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Example**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;              |       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Output**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       |
 |:-----------------:|:-------------------:|:---------------------------------:|:----------------------:|
-|       **%c**      |     Character       |       `printf("%c", 'A');`          |           A            |
-|       **%d**      |      Integer        |       `printf("%d", 42);`           |           42           |
-|       **%f**      |  Floating point     |      `printf("%f", 3.14);`          |        3.140000       |
-|      **%lf**      |       Double        |   `printf("%lf", 1.618);`           |        1.618000       |
-|       **%o**      |       Octal         |        `printf("%o", 8);`           |           10           |
-|       **%p**      |      Pointer        | `int var = 5; printf("%p", &var);`  |    Memory address     |
-|       **%s**      |       String        | `printf("%s", "Hello");`            |         Hello         |
-|       **%u**      | Unsigned integer    |     `printf("%u", -42);`            | Unpredictable value   |
-|   **%x or %X**    |   Hexadecimal       |     `printf("%x", 255);`            |           ff           |
-|       **%%**      | Percent symbol      |         `printf("%%");`             |           %            |
+|       **`%c`**      |    ***Character***       |       **`printf("%c", 'A');`**          |           **A**            |
+|       **`%d`**     |      ***Integer***        |       **`printf("%d", 42);`**           |           **42**           |
+|       **`%f`**      |  ***Floating Point***     |      **`printf("%f", 3.14);`**          |        **3.140000**       |
+|      **`%lf`**      |       ***Double***        |   **`printf("%lf", 1.618);`**           |        **1.618000**       |
+|       **`%o`**      |       ***Octal***         |        **`printf("%o", 8);`**           |           **10**           |
+|       **`%p`**      |      ***Pointer***        | **`int var = 5; printf("%p", &var);`**  |    **Memory address**     |
+|       **`%s`**      |       ***String***        | **`printf("%s", "Hello");`**            |         **Hello**         |
+|       **`%u`**      | ***Unsigned Integer***    |     **`printf("%u", -42);`**            | **Unpredictable value**   |
+|   **`%x or %X`**    |   ***Hexadecimal***       |     **`printf("%x", 255);`**            |           **ff**           |
+|       **`%%`**      | ***Percent Symbol***      |         **`printf("%%");`**             |           **%**            |
 
 > *In the table above, there are Some Format Specifiers for the printf() Function, followed by practical examples.*
 
@@ -641,7 +641,7 @@ In summary, the control string consists of three types of characters:
 The `scanf()` function reads characters from the *standard input*, interprets them according to the format specification, and stores the results in variables declared in the program.
 
 ```c
-scanf("control string", list of memory addresses of variables);
+scanf("control string", &variable);
 ```
 
 The *memory address* representation of the variables that will *receive the input data is provided* using the `&` operator *followed by the variable name*. Additionally, this function also uses escape control characters via backslash codesand formatting characters `%`.
@@ -654,14 +654,14 @@ scanf("%d", &number);   // The scanf() function reads the typed number and store
 
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Specifier**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Description**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                          |  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Example**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
 |:-----------------:|:-------------------:|:---------------------------------:|
-| %d        | Read an integer                        | `scanf("%d", &num);`            |
-| %f        | Read a floating-point number            | `scanf("%f", &floatValue);`     |
-| %c        | Read a character                       | `scanf("%c", &letter);`         |
-| %s        | Read a string                          | `scanf("%s", stringVar);`       |
-| %lf       | Read a double (long float)             | `scanf("%lf", &doubleValue);`   |
-| %x        | Read a hexadecimal integer            | `scanf("%x", &hexValue);`       |
-| %o        | Read an octal integer                  | `scanf("%o", &octValue);`       |
-| %u        | Read an unsigned integer               | `scanf("%u", &unsignedValue);`  |
+| **`%d`**        | ***Read an integer***                        | **`scanf("%d", &num);`**            |
+| **`%f`**        | ***Read a floating-point number***            | **`scanf("%f", &floatValue);`**     |
+| **`%c`**        | ***Read a character***                       | **`scanf("%c", &letter);`**         |
+| **`%s`**        | ***Read a string***                          | **`scanf("%s", stringVar);`**       |
+| **`%lf`**       | ***Read a double (long float)***             | **`scanf("%lf", &doubleValue);`**   |
+| **`%x`**        | ***Read a hexadecimal integer***            | **`scanf("%x", &hexValue);`**       |
+| **`%o`**        | ***Read an octal integer***                  | **`scanf("%o", &octValue);`**       |
+| **`%u`**        | ***Read an unsigned integer***               | **`scanf("%u", &unsignedValue);`**  |
 
 > *These format specifiers are used with the scanf() function to read data from the standard input.*
 
@@ -674,35 +674,39 @@ Conditional Statements in programming enable the program to make decisions and e
 Conditional Statements in programming enable diverse execution paths based on logical conditions using "if," "else if," and "else" statements. Utilizing truth tables to evaluate conditions, they systematically ensure precise decision-making, enhancing program functionality and reliability.
 
 ```c
-int number = 10;
+int number = 10;      //  Initializing an integer variable with 10 value
 
-if ( number > 0 )
-  printf("%s", "It's a positive number");
+if ( number > 0 )     //  We are telling the compiler to verify if the value stored in the variable satisfies the given condition.
+  printf("%s", "It's a positive number");  // If true, this line is executed
 ```
+
+> *For a better understanding, when a conditional statement is executed, two possible outcomes are provided: true and false. In the previous case, the compiler substitutes the variable "number" with its stored value, resulting in the following evaluation: "Is 10 greater than 0?" . In this instance, the answer is true. As a result, the compiler returns a value other than 0 to the "if()" function, permitting the execution of the subsequent command line.*
 
 Boolean expressions are essential in programming, denoting true/false conditions. They employ logical operators (AND, OR, NOT) to combine or negate conditions, enabling intricate decision-making in code. Evaluating these expressions empowers programs to execute tailored actions based on outcomes, optimizing efficiency and functionality.
 
 > *Any result from a comparison that is a non-zero value is treated as true, whereas 0 is interpreted as false.*
 
 <table>
-<tr><th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TRUTH TABLE FOR && &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TRUTH TABLE FOR ||&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th></tr>
-<tr><td>
+<tr><th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TRUTH TABLE FOR && &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TRUTH TABLE FOR ||&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th></tr>
+<tr>
+  <td>
   
-| &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Operand 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Operand 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Result (&&)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+| &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Operand 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Operand 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Result (&&)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 |:-----------:|:-----------:|:-------------:|
-|   false   |   false   |    false    |
-|   false   |   true    |    false    |
-|   true    |   false   |    false    |
-|   true    |   true    |     true    |
+|   **`false`**   |   **`false`**   |    **`false`**    |
+|   **`false`**   |   **`true`**   |    **`false`**    |
+|   **`true`**   |   **`false`**   |    **`false`**    |
+|   **`true`**   |   **`true`**   |    **`true`**    |
 
-</td><td>
+</td>
+<td>
 
-| &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Operand 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Operand 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Result (\|\|)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+| &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Operand 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Operand 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Result ( \|\| )&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 |:-----------:|:-----------:|:-------------:|
-|   false   |   false   |    false    |
-|   false   |   true    |     true    |
-|   true    |   false   |     true    |
-|   true    |   true    |     true    |
+|   **`false`**   |   **`false`**   |    **`false`**    |
+|   **`false`**   |   **`true`**    |     **`true`**    |
+|   **`true`**    |   **`false`**   |     **`true`**    |
+|   **`true`**    |   **`true`**    |     **`true`**    |
 
 </td></tr> </table>
 
@@ -710,13 +714,12 @@ Boolean expressions are essential in programming, denoting true/false conditions
 
 #
 
-### If Statement 
-
-The `if` statement is the *primary decision-making* command in C programming. It evaluates the specified condition and, if the condition is true (non-zero), the program executes the following code block. If the condition is false*(equal to zero), the code block is not executed.
+### Conditional Statement - IF Instruction
+The *if* statement is the *primary decision-making* command in C programming. It evaluates the specified condition and, if the condition is true (non-zero), the program executes the following code block.
 ```c
 if (condition)
 {
-  code block;
+  // code block
 }
 ```
 > *The code block should be delimited by an opening curly brace and a closing curly brace. However, if the block consists of only a single command, the curly braces become optional and can be omitted.*
@@ -737,15 +740,15 @@ int main (int argc, char *argv[])
 
 #
 
-### Else Statement
+### Conditional Statement - ELSE Instruction
 
-Including the `else` clause allows a second code block to be executed if the condition tested by the `if` statement is false (equal to zero).
+Including the *else* clause allows a *second code block* to be executed if the condition tested by the *if* statement is false (equal to zero).
 
 ```c
 if (condition) {
-    // Code block 1; Executed when the condition is true
+    // code block 1; Executed when the condition is true
 } else {
-    // Code block 2; Executed when the condition is false
+    // code block 2; Executed when the condition is false
 }
 ```
 
@@ -771,20 +774,20 @@ int main (int argc, char *argv[])
 
 #
 
-### Nested If Statement 
+### Conditional Statement - NESTED IF
 
 Nested if statement in C is the nesting of if statement within another if statement and nesting of if statement with an else statement. Once an else statement gets failed there are times when the next execution of statement wants to return a true statement, there we need nesting of if statement to make the entire flow of code in a semantic order. 
 
 ```c
-if ( check 1st condition)
+if (condition 1)
 {
-  if ( check 2nd condition){
-    // Verify True statements of 2nd condition;
+  if (condition 2){
+    // if the statement is true, this code block is executed
   }else{
-    // Verify False statements of 2nd condition;
+    // if the statement is false, this code block is executed
   }
 }else{
-  // Verify False statements of 1st condition;
+  // if the condition 1 statement is false, this code block is executed
 }
 ```
 
@@ -836,17 +839,17 @@ int main (int argc, char *argv[])
 
 #
 
-### Else If Statement
+### Conditional Statement - ELSE IF Instruction
 
-The "else if" statement is used to create multiple-choice decisions. It functions similarly to the nesting of if statements within the else clauses of higher-level if statements.
+The *else if* statement is used to create multiple-choice decisions. It functions similarly to the nesting of if statements within the else clauses of higher-level if statements.
 
 ```c
 if (condition1) {
-  // block of code to be executed if condition1 is true
+  // executed if condition1 is true
 } else if (condition2) {
-  // block of code to be executed if the condition1 is false and condition2 is true
+  // executed if the condition1 is false and condition2 is true
 } else {
-  // block of code to be executed if the condition1 is false and condition2 is false
+  // executed if the condition1 is false and condition2 is false
 }
 ```
 
@@ -872,7 +875,7 @@ return 0;
 
 #
 
-### SWITCH  
+### Conditional Statement - Switch Statement  
 
 In a *switch* statement, the computer sequentially compares a variable against a list of constants. If one of the constants described in the case clauses matches the current value of the variable, the computer executes the command or block of commands associated with that option.
 
@@ -881,10 +884,10 @@ This type of structure differs from *if* because it can only test for equality, 
 ```c
 switch (variable)
 {
-  case 1:
+  case condition:
     // code block
     break;
-  case 2:
+  case condition:
     // code block
     break;
   (...)
@@ -893,13 +896,13 @@ switch (variable)
 }
 ```
 
-> *The conditional variable must be of either int or char data type.*
+> *The variable and the conditions must be of either int or char data type.*
 
 The *break* command is used to terminate a sequence of commands. Technically, its usage is optional. However, when omitted, the execution will continue with the commands in the next *case* until the computer encounters a *break* or reaches the end of the *switch-case* structure.
 
 The *deafult* clause is also optional and is used to handle cases that do not match any of the conditions tested in the *case* clauses. If not used, no command will be executed if all *case* options fail.
 
-### Example: 
+#### Example: Calculator Using The Switch Command
 ```c
 #include <stdio.h>
 #include <stdlib.h>
@@ -935,9 +938,241 @@ int main (int argc, char *argv[])
     return 0;
 }
 ```
+
+#  
+
+## Loop Structures
+
+Loop structures are fundamental in C programming as they allow the iterative execution of code blocks based on specific conditions. The C language offers three main loop structures: *for*, *while*, and *do-while*. These structures provide efficiency and flexibility in implementing repetitive logic.
+
+### Loop Structures - While Statement
+
+The *while* statement executes a block of commands as long as the specified condition remains true (non-zero). It's used for looping tasks, and the block is executed only if the initial condition is met.
+
+```c
+while (condition)
+{
+  // code block
+}
+```
+
+The *while* statement is a fundamental looping construct that repeatedly executes a block of commands as long as a specified condition holds *true*. This condition is evaluated at the *beginning of each iteration*, and the loop continues until the condition becomes *false*. 
+
+```mermaid
+---
+title: While Loop FlowChart
+---
+  flowchart TD
+    A([Condition]) --> |False| D(Next Command Line)
+    A --> |True| B{{While Loop}}
+    B -->|Code_Block| A
+```
+
+#### Example: Adding Number Until the Condition is True
+```c
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{  
+  int i, sum;
+
+  sum = i = 0;
+  while ( i <= 10 )
+  {
+    i++;
+    sum += 1;
+  }
+
+  printf("%d\n", sum);
+  return0;
+}
+```
+
+If the tested condition is a number or a mathematical expression, the loop will be executed until the value of the number or expression becomes equal to zero. 
+
+> *Similar to the if statement, if the command block consists of a single instruction, the curly braces are not necessary.*
+
 #
 
+### Loop Structures - Do-While Statement
+
+The *do-while* loop in C is similar to the *while* loop, with the key distinction that it *executes the code block first before checking the test condition*. In this construct, the instructions within the loop are executed at least once. Moreover, if the tested condition remains true, *the code block will be repeatedly executed until the condition eventually evaluates to false*. 
+
+This loop type ensures the initial execution of the block and is useful when you want to guarantee that the loop's code runs at least once, regardless of the condition's outcome.
+
+```c
+do{
+  // code block
+}while(condition);
+```
+
+> *The do-while loop in C ensures that the code block is executed at least once before checking the conditional expression. It's useful when you want to perform an action before testing the condition, ensuring initial execution followed by potential repetition based on the condition's outcome.*
+
+```mermaid
 ---
+title: Do-While Loop FlowChart
+---
+  flowchart TD
+    B{{Do-While Loop}} --> |Code_Block| A([Condition])
+    A --> |False| C(Next Command Line)
+    A --> |True| B
+```
+
+
+#### Example: Add Numbers Until the User Enters Zero
+```c
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{  
+  double number, sum = 0;
+
+  do {
+    printf("Enter a number: ");
+    scanf("%lf", &number);
+    sum += number;
+  }while(number != 0.0);
+
+  printf("%s %2.f", "Sum = ", sum);
+  return 0;
+}
+```
+
+### Loop Structures - For Statement
+
+In the *for loop*, the initialization is executed once at the beginning. Then, the loop continues as long as the condition is true. After each iteration, the increment is performed before checking the condition for the next iteration.
+
+```c
+for (initialization; condition; increment) {
+    // Code to be executed in each iteration
+}
+```
+In the context of the *for loop* in C programming, three essential components work together to control the loop's behavior:
+
+- **Initialization:** The initial value or setup of the loop variable before starting the loop.
+- **Condition:** The expression that is evaluated before each iteration. If it's true, the loop continues; if false, the loop terminates.
+- **Increment:** The operation that updates the loop variable after each iteration. It can be an increase or decrease in value.
+
+> *These three sections should be separated by a semicolon (;).*
+
+The *for loop* continues execution while the test result is true. As soon as the condition becomes false (equal to zero), the program's execution will be directed to the commands following the for loop.
+
+```mermaid
+---
+title: For Loop FlowChart
+---
+  flowchart TD
+    A(Init) --> B([Condition])
+    B --> |False| C(Next Command Line)
+    B --> |True| D{{For Loop}}
+    D --> |Code_Block| E(Increment)
+    E --> B  
+```
+
+#### Example: Add Numbers Until The Condition is True
+```c
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+  int sum;
+  
+  sum = 0;
+  for(int i = 0; i < 10; ++i)
+    sum += i;
+  
+  printf("%d\n", sum);
+  return 0;
+}
+```
+
+> *Similar to the while and do-while statement, if the command block consists of a single instruction, the curly braces are not necessary.*
+
+#
+
+### Variation of Structure
+
+If the condition is omitted, the loop will become infinite and can be interrupted by using a control statement (break, return, or goto) in the *for loop's* code block.
+
+> *Any of the three instructions that form the *for loop* can be omitted, although the semicolons must remain.*
+
+```c
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+  int n;
+  for (;;)
+  {
+    scanf("%d", &n);
+    if (n == 1)
+      break;       // This command will be addressed later.
+  }
+  return 0;
+} 
+```
+
+> *This code demonstrates how the break command can be used to prematurely exit a loop based on a specific condition.*
+
+When the *increment part* is omitted, no change is made to the control variable. As a result, the loop will either run infinitely, or this modification should be performed within the *for loop's* command block, as shown in the following example:
+
+```c
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+  int n;
+  for (n = 0; n != 123;)
+    scanf("%d", &n);
+  return 0;
+} 
+```
+
+> *The program uses a for loop with a condition n != 123. The loop continues until the input value n becomes equal to 123, at which point the loop terminates.*
+
+The *for loop* command allows multiple arguments in all three sections. In this case, *the additional arguments should be separated by commas* (,), as illustrated in the example:
+
+```c
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+  int a, b;
+  for (a = 0, b = 20; a < b; ++a, --b)
+    printf ("%s %d %s %d\n", "a =", a, "b =", b); 
+  return 0;
+} 
+```
+
+> *The loop condition a < b ensures that the loop runs as long as a is less than b. As the loop progresses, a is incremented while b is decremented, resulting in a change in the comparison between them. The loop continues to run until the condition a < b becomes false.*
+
+Finally, both *initialization* and *increment* can be placed outside the *for loop's control parentheses*, as shown in the example:
+
+```c
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+  int a ;
+
+  a = 0;  
+  for (; a < 10 ;){
+    printf ("%s %d\n", "a =", a);
+    a++;
+  }
+  return 0;
+} 
+```
+
+> *The loop condition is specified as a < 10, meaning the loop will continue as long as a is less than 10. The a value is then incremented using the a++; statement, ensuring that the loop progresses toward the exit condition.*
+
+## Jump Statements
+
+Jump Statements are used to control the execution flow of a program. They allow the program to skip to a specific part of the code, exit a loop prematurely, or return from a function. Some examples of jump statements include break, continue, return, and goto. These commands are powerful but should be used with caution to maintain code readability and structure.
+
+
+---
+
 
 
 Functions
