@@ -1907,15 +1907,14 @@ Functions are the constructs that allow the user to break down their programs in
 ```c
 return_type function_name(parameters) {
     // Function body
-    // Code to perform some task
-    return value; // Optional return statement
+    return value; // This is only required for functions that have a non-void return type.
 }
 ```
 
-> ***return_type:** It specifies the data type of the value that the function will return. If the function doesn't return a value, you should use `void`.*    
-> ***parameters:** These are the input values that the function can accept. You can have zero or more parameters. Each parameter consists of a data type and a name.*    
-> ***Function body:** This is where you write the actual code that the function will execute when called. It can contain any valid C statements.*    
-> ***return value (optional):** If the function is expected to return a value, you use the `return` statement to specify the value to be returned. This is only required for functions that have a non-void return type.*
+> ***return_type:** It specifies the data type of the value that the function will return. If the function doesn't return a value, you should use `void`.*      
+> ***parameters:** You can have zero or more parameters. Each parameter consists of a data type and a name.*  
+> ***Function body:** This is where you write the actual code that the function will execute when called.*  
+> ***return value (optional):** If the function is expected to return a value, you use the `return` statement to specify the value to be returned. *
 
 Note that the type must be specified for each of the N input variables. It's in the parameter declaration that we inform the compiler about the inputs to the function (just as we specify the output in the return type). Each variable described in the parameter declaration will be treated as a local variable of the function. When a function has no input arguments, the parameter list will be empty. However, the parentheses in the function declaration are mandatory.
 
