@@ -1662,8 +1662,6 @@ int main(int argc, char *argv[])
 
 Typedef is especially helpful when working with complex data types, such as function pointers or structures. It allows you to create meaningful names for these types, making your code easier to understand, more maintainable, and less error-prone.
 
-#
-
 ## Strings 
 
 In C, you don't have a dedicated string data type like in some higher-level languages. Instead, strings are represented using arrays of characters. The last character of a string is always the null character, which indicates the end of the string.
@@ -1703,31 +1701,554 @@ For example, to compare two strings, you would use functions like strcmp(), and 
 
 ### Basic String Manipulation Functions 
 
+Below, we will present some basic functions for string manipulation. With the exception of the ***fgets()*** function, the other functions are contained in the ***string.h*** header file.
 
+#### FGETS
+In C programming, fgets is a fundamental function for reading strings from an input stream, typically used for reading text from files or the standard input (keyboard). 
 
+```c
+char *fgets(char *str, int n, FILE *stream);
+```
 
+> ***str**: A pointer to a character array (string) where the read line of text will be stored.*   
+> ***n**: An integer specifying the maximum number of characters to read, including the null terminator. This helps prevent buffer overflows.*  
+> ***stream**: A pointer to the input stream from which to read the line of text. This can be a file pointer, such as stdin for standard input (keyboard), or a file opened using fopen for reading.*
 
+The key advantage of fgets is that it allows you to specify the maximum number of characters to read, preventing buffer overflow issues. It also automatically appends a null terminator ('\0') to the end of the string, making it suitable for working with C strings.
 
-## Strings
+```c
+#include <stdio.h>
+
+int main() {
+  char input[100]; // Maximum size of the string to be read
+  
+  printf("Enter a line of text: ");
+  
+  // Use fgets to read a line of text from standard input
+  fgets(input, sizeof(input), stdin);
+  
+  printf("You entered: %s", input);
+  
+  return 0;
+}
+```
+
+> *In this example, fgets reads a line of text from stdin (standard input) and stores it in the input character array with a maximum size of 100 characters.*
+
+#
+
+#### STRCPY
+
+The *strcpy* function in C is used for string manipulation and is short for **"string copy."** It allows you to copy the characters from one string to another, including the null terminator. This function is commonly used to duplicate strings or to initialize character arrays with a specific string value.
+
+```c
+char *strcpy(char *destination, const char *source);
+```
+
+> ***destination**: A pointer to the destination character array (string) where the copy will be stored. Ensure that the destination array has enough space to hold the source string.*  
+> ***source**: A pointer to the source string that you want to copy.*
+
+Here's an example of using strcpy to copy a string from one array to another:
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+  char source[] = "Hello, World!";
+  char destination[20]; // Make sure it's large enough to hold the source
+  
+  // Use strcpy to copy the source string to the destination
+  strcpy(destination, source);
+  
+  printf("Source: %s\n", source);
+  printf("Destination: %s\n", destination);
+  
+  return 0;
+}
+```
+
+> *The strcpy function copies the content of the source string to the destination string, including the null terminator. It's important to ensure that the destination array has sufficient space to accommodate the source string to avoid buffer overflows.*
+
+#
+
+#### STRCAT
+
+The strcat function in C is used for string manipulation and stands for "string concatenation." It allows you to concatenate (append) one string to the end of another string. This function is particularly useful when you need to combine two strings into a single string.
+
+```c
+char *strcat(char *destination, const char *source);
+```
+
+> ***destination**: A pointer to the destination character array (string) where the copy will be stored. Ensure that the destination array has enough space to hold the source string.*  
+> ***source**: A pointer to the source string that you want to copy.*
+
+Here's an example of using strcpy to copy a string from one array to another:
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+  char destination[50] = "Hello, ";
+  char source[] = "World!";
+  
+  // Use strcat to append the source string to the destination
+  strcat(destination, source);
+  
+  printf("Concatenated String: %s\n", destination);
+  
+  return 0;
+}
+```
+
+> *The strcat function appends the content of the source string to the end of the destination string. Ensure that the destination array has sufficient space to accommodate both strings to avoid buffer overflows.*
+
+#
+
+#### STRLEN
+
+The strlen function in C is used to determine the length of a string, which means it calculates the number of characters in a string. This function is particularly helpful when you need to know the size of a string for various operations like memory allocation or string manipulation.
+
+```c
+size_t strlen(const char *str);
+```
+
+> ***str**: A pointer to the null-terminated string for which you want to find the length.*  
+> ***size_t**: strlen returns a value of type size_t, which is an unsigned integer type that can hold the length of the string.*
+
+Here's an example of using strcpy to copy a string from one array to another:
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+  char text[] = "Hello, World!"; // Null-terminated string
+  
+  // Use strlen to find the length of the string
+  size_t length = strlen(text);
+  
+  printf("Length of the string: %zu\n", length);
+  
+  return 0;
+}
+```
+
+> *The strlen function calculates the length of the null-terminated text string and returns it as a size_t value, which is then printed to the console.*
+
+#
+
+#### ATOI AND ATOF
+
+The *atoi* and *atof* functions are used for converting strings to numeric values. These functions are valuable when you need to extract numerical data from strings, which is a common task when processing input data or configuration files.
+
+**Syntax of atoi Function:**
+
+> *str: A pointer to the null-terminated string containing the integer representation.*
+
+```c
+int atoi(const char *str);
+```
+
+**atoi Function:**
+- atoi stands for "ASCII to Integer."
+- It is used to convert a string containing an integer representation into an actual integer value.
+- The function stops conversion when it encounters a character that is not a digit.
+- It returns an integer.
+
+#
+
+**Syntax of atof Function:**
+
+```c
+double atof(const char *str);
+```
+
+> *str: A pointer to the null-terminated string containing the floating-point representation.*
+
+**atof Function:**
+- atof stands for "ASCII to Float."
+- It is used to convert a string containing a floating-point representation into a floating-point (double) value.
+- The function stops conversion when it encounters a character that is not a digit or a decimal point.
+- It returns a double.
+
+#
+
+Example of Using atoi and atof:
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+  char intStr[] = "12345";
+  char floatStr[] = "3.14159";
+  
+  // Using atoi to convert a string to an integer
+  int intValue = atoi(intStr);
+  
+  // Using atof to convert a string to a floating-point number
+  double floatValue = atof(floatStr);
+  
+  printf("Integer value: %d\n", intValue);
+  printf("Floating-point value: %f\n", floatValue);
+  
+  return 0;
+}
+```
+
+> *The atoi function converts the intStr string to an integer, and the atof function converts the floatStr string to a floating-point number, which are then printed to the console.*
 
 ## Functions
 
+Functions are the constructs that allow the user to break down their programs into building blocks. The main characteristic of functions is the fact that, once written and debugged, they can be reused as many times as needed, including by other programs.
+
+```c
+return_type function_name(parameters) {
+    // Function body
+    // Code to perform some task
+    return value; // Optional return statement
+}
+```
+
+- **return_type:** It specifies the data type of the value that the function will return. If the function doesn't return a value, you should use `void`.
+
+- **parameters:** These are the input values that the function can accept. You can have zero or more parameters. Each parameter consists of a data type and a name.
+
+- **Function body:** This is where you write the actual code that the function will execute when called. It can contain any valid C statements.
+
+- **return value (optional):** If the function is expected to return a value, you use the `return` statement to specify the value to be returned. This is only required for functions that have a non-void return type.
+
+Note that the type must be specified for each of the N input variables. It's in the parameter declaration that we inform the compiler about the inputs to the function (just as we specify the output in the return type). Each variable described in the parameter declaration will be treated as a local variable of the function. When a function has no input arguments, the parameter list will be empty. However, the parentheses in the function declaration are mandatory.
+
+When a *return* statement is encountered, the function is immediately terminated, and if any data is provided after *return*, its value is returned by the function. It's important to remember that the return value provided must be compatible with the return type declared for the function. A function can have more than one *return* statement; however, only one will be executed per function call. This becomes clear when we consider that the function is terminated when the program reaches the first *return* statement.
+
+Here are two examples of functions in C, one of which uses multiple return statements:
+
+#### Example: A Simple Function
+```c
+#include <stdio.h>
+
+// Function to calculate the square of a number
+int square(int num) {
+  int result = num * num;
+  return result;
+}
+
+int main() {
+  int number = 5;
+  int squared = square(number);
+  printf("The square of %d is %d\n", number, squared);
+  return 0;
+  }
+```
+
+> *In this example, the square function takes an integer as input, calculates its square, and returns the result.*
+
+#### Example: Function with Multiple Return Statements
+```c
+#include <stdio.h>
+
+// Function to check if a number is positive, negative, or zero
+char* checkNumber(int num) {
+  if (num > 0) {
+      return "Positive";
+  } else if (num < 0) {
+      return "Negative";
+  } else {
+      return "Zero";
+  }
+}
+
+int main() {
+  int number = -7;
+  char* result = checkNumber(number);
+  printf("%d is %s\n", number, result);
+  return 0;
+}
+```
+
+> *In this example, the checkNumber function takes an integer as input, checks whether it's positive, negative, or zero, and returns a corresponding string. This function uses multiple return statements based on different conditions.*
+
+Since functions return values, we can utilize them for assignments and conditional comparisons (as part of an expression) or even in outputting data. However, it's important to emphasize that in an assignment, function calls can only appear on the right-hand side of assignment statements.
+
+#
+
+### VOID TYPE
+
+Instead of returning data, functions with a void return type are often used to perform actions or tasks, such as printing output, modifying variables, or interacting with external devices. To declare a function with a void return type, you simply specify void as the return type in the function signature:
+
+```c
+void functionName(parameters) {
+    // Function body
+    // Code to perform some task
+}
+
+```
+
+> ***void:** This indicates that the function doesn't return a value.*  
+> ***functionName:** This is the name you give to your function.*  
+> ***parameters:** These are the input values that the function can accept. You can have zero or more parameters.*
+
+Here's an example of a simple C function with a void return type that prints a message:
+
+```c
+#include <stdio.h>
+
+void printWelcome() {
+  printf("Welcome to our program!\n");
+}
+
+int main() {
+  // Calling the function to print the welcome message
+  printWelcome();
+  return 0;
+}
+```
+
+> *In a void function, the use of the return statement is optional and can be omitted.*
+
+### FUNCTION CALL
+
+Once functions are defined, they can be used without worrying about how they were written. This is what we refer to as a function call. A function call is the act of invoking the function in a program. When you call a function, you are requesting it to execute the code contained within its body. Functions are called by their name followed by parentheses, which can contain arguments if the function expects them.
+
+For example, if you have a function called calculateSum that adds two numbers, you can call it like this:
+
+```c
+int result = calculateSum(5, 3); 
+```
+
+> *The function call above executes the code inside the calculateSum function with the arguments 5 and 3, and the result is assigned to the result variable.*
+
+In general, arguments can be passed to functions in two ways, as follows:
+
+#### Passing Parameters by Value
+
+Passing parameters by value is a method of passing arguments to functions in which a copy of the actual parameter values is passed. This means that the function works with a copy of the original values, and any modifications to the parameters within the function do not affect the original variables outside of the function. This method is commonly used to avoid unintended side effects on the original variables.
+
+Here's an example in C that demonstrates passing parameters by value:
+
+```c
+#include <stdio.h>
+
+void swap(int a, int b) {
+  int temp = a;
+  a = b;
+  b = temp;
+}
+
+int main() {
+  int x = 5;
+  int y = 10;
+  
+  printf("Before swap: x = %d, y = %d\n", x, y);
+  
+  // Calling the function to swap the values of x and y
+  swap(x, y);
+  
+  printf("After swap: x = %d, y = %d\n", x, y);
+  
+  return 0;
+}
+```
+
+> *In this example, even after calling the swap function, the values of x and y in the main function remain the same because the swap function received copies of the values and did not affect the original variables. This illustrates passing parameters by value.*
+
+#
+
+#### Passing Parameters by Reference
+
+This type of function call is called "call by reference." This name comes from the fact that, in this type of call, the values of the variables are not passed to the function but rather their references (memory addresses of the variables). The function uses these references to modify the values of the variables used in the function call.
+
+In this type of call, the formal parameters of a function must be declared as pointers (using the * operator). Pointers are the "references" we need to be able to change the variable outside the function. Additionally, to make these pointers receive the memory address of the variables used in the function call, it is necessary to place the & operator in front of each of the variables, as shown in the example:
+
+> *In C, this is a common way to achieve call by reference, but it's worth noting that some other programming languages may have different mechanisms for call by reference*
+
+Here's an example in C that demonstrates passing parameters by reference using pointers:
+
+```c
+#include <stdio.h>
+
+void swap(int *a, int *b) {
+  int temp = *a;
+  *a = *b;
+  *b = temp;
+}
+
+int main() {
+  int x = 5;
+  int y = 10;
+  
+  printf("Before swap: x = %d, y = %d\n", x, y);
+  
+  // Calling the function to swap the values of x and y by reference
+  swap(&x, &y);
+  
+  printf("After swap: x = %d, y = %d\n", x, y);
+  
+  return 0;
+}
+```
+
+> *In this example, the swap function receives pointers to x and y as arguments, allowing it to directly access and modify the variables x and y in the main function. This demonstrates passing parameters by reference using pointers.*
+
+Note that once the value of the function has been stored in the memory address of nro, no return is necessary. This type of call is the same as used by the scanf() function. This is because this function needs to change the value of the variable passed as a parameter by assigning the new value entered by the user.
+
+#
+
+### RECURSION
+
+Functions in C can call each other to perform a specific task. A special case of function calling occurs when a function calls itself. This process is called "recursion," and the function is referred to as a recursive function.
+
+In a recursive function, the problem is divided into smaller, similar subproblems, and each subproblem is solved by applying the same function recursively. This process continues until a base case is reached, which is a condition that indicates when the recursion should stop. 
+
+**Syntax of Recursive Function:**
+
+```c
+return_type recursiveFunction(parameters) {
+  // Base case
+  if (base_case_condition) {
+    // Return a value or perform some action
+  } else {
+    // Recursive case
+    // Call the function with modified arguments
+    return recursiveFunction(modified_parameters);
+  }
+}
+```
+
+**Base Case:** This is the termination condition that specifies when the recursion should stop. It prevents the function from calling itself infinitely. When the base case is met, the recursion unwinds.
+
+**Recursive Case:** In this part, the function calls itself with modified arguments, typically smaller or simpler than the original problem.
+
+Here's a classic example of recursion in C: calculating the factorial of a number.
+
+```c
+#include <stdio.h>
+
+int factorial(int n) {
+  // Base case: factorial of 0 or 1 is 1
+  if (n == 0 || n == 1) {
+    return 1;
+  } else {
+    // Recursive case: n! = n * (n-1)!
+    return n * factorial(n - 1);
+  }
+}
+
+int main() {
+  int num = 5;
+  int result = factorial(num);
+  printf("Factorial of %d is %d\n", num, result);
+  return 0;
+}
+```
+
+> *The base case is when n is 0 or 1, where the factorial is 1. In the recursive case, the function calls itself with n-1 to calculate (n-1)! and multiplies it by n to get n!. The recursion continues until the base case is reached.*
+
+A recursive function almost always consumes more memory and has slower processing than its non-recursive counterpart. This occurs because the memory used in a function call is only released upon its completion, so the computer allocates much more memory when the function is recursive. 
+
+However, recursive code is more compact and sometimes easier to understand. Additionally, there are certain algorithms that are more efficient when implemented recursively. For example, the construction of some types of abstract data structures, such as trees, is inherently recursive in nature, even in their definition.
+
+#
+
+### PARAMETERS TO THE MAIN FUNCTION
+
+In C, the main() function can receive arguments directly from the command line when you run the program from the terminal. These arguments are passed as parameters to the main() function. These parameters allow you to provide information or options to the program when it is started. The parameters *argc* and *argv* provide the programmer with access to the command line of the operating system through which the program was invoked. The declaration of a main() function with these parameters is:
+
+```c
+int main(int argc, char *argv[])
+```
+
+**argc:** (argument count): It's an integer that represents the total number of arguments passed to the program, including the program's own name.
+
+**argv:** (argument vector): It's an array of strings, where each element is a sequence of characters representing an argument passed to the program. argv[0] contains the name of the program itself, and additional arguments are stored in argv[1], argv[2], and so on.
+
+Here's an example of how these parameters can be used:
+
+```c
+#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+  printf("Total number of arguments: %d\n", argc);
+  
+  printf("Program name: %s\n", argv[0]);
+  
+  for (int i = 1; i < argc; i++) {
+    printf("Argument %d: %s\n", i, argv[i]);
+  }
+  return 0;
+}
+```
+
+When you run this program from the terminal and provide arguments, it will print them to the screen. For example:
+
+```julia
+$ ./my_program arg1 arg2 arg3
+Total number of arguments: 4
+Program name: ./my_program
+Argument 1: arg1
+Argument 2: arg2
+Argument 3: arg3
+```
+
+This is useful for creating programs that can be configured or customized with different options and input data from the command line.
+
 ## Pointers
 
+Whenever we use the scanf() function to read an element of an array, we pass the memory address of that element. To do this, as previously discussed, we use the & operator, which returns the memory address allocated for a variable. Therefore, if v[i] represents the i-th element of the array, &v[i] represents the memory address where that element is stored.
 
+```c
+int v[10];
+```
 
+The variable *v*, which represents the array, is a constant that represents its initial address. In other words, *v* without indexing points to the first element of the array. Therefore, the C language supports pointer arithmetic, which means you can add and subtract pointers as long as the resulting value points to the area reserved for the array.
 
+If *p* represents a pointer to an integer, *p+1* represents a pointer to the next integer stored in memory. This increment is equivalent to adding **2 bytes** - *the size of an int* - to the memory address stored in the pointer *p*. With this, in an array, we have the following equivalences:
 
+```julia
+v+0 points to the 1st element of the array.
+v+1 points to the 2nd element of the array.
+v+2 points to the 3rd element of the array.
+...
+v+N points to the (N+1)-th element of the array.
+```
 
+Therefore, writing *&v[i]* is equivalent to writing *(v + i)*. Similarly, writing *v[i]* is equivalent to writing *\*(v + i)*. This is because the `*` operator returns the value stored at the memory location indicated by *(v + i)*.
 
+In C, the declaration of a pointer is done using the following syntax:
 
+```c
+data_type *variable_name[size]...[sizeN]
+```
 
+Here's an example that demonstrates the use of arrays and pointers in C:
 
+```c
+#include <stdio.h>
 
+int main() {
+int numbers[] = {1, 2, 3, 4, 5};
+int *ptr = numbers; // Assign the address of the first element to ptr
+int sum = 0;
 
+for (int i = 0; i < 5; i++) {
+  sum += *ptr; // Access the value using the pointer
+  ptr++;       // Move the pointer to the next element
+}
 
+printf("Sum of elements: %d\n", sum);
 
+return 0;
+}
+```
 
+> *We assign the address of the first element of the numbers array to ptr. Then, we use a loop to iterate through the array using the pointer ptr to access each element's value. The pointer is incremented to move to the next element in each iteration.*
+
+#
+
+### HOW POINTERS WORK
 
 
 
