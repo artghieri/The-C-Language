@@ -2695,7 +2695,13 @@ int main() {
 
 ## Conclusion
 
+After covering numerous topics that encompass the fundamental framework of C programming, I hope this guide has been helpful to all those who dedicated their time to reading it.
 
+May this guide serve as inspiration and assistance for all those looking to enter the world of programming and for those who are already studying it, aiding in the understanding of this crucial and useful language.
+
+Remember that this guide is just a small part of the extensive use of this language, and there is always room to learn more.
+
+Thank you.
 
 
 
