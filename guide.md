@@ -2428,8 +2428,6 @@ data_type **pointer_to_pointer = &pointer_variable;
 - **pointer_to_pointer** is the name of the pointer to a pointer variable.
 - **pointer_variable** is the pointer whose address you want to store in the pointer to a pointer.
 
-Pointer-to-pointer variables are particularly useful when working with dynamic memory allocation and multi-dimensional arrays.
-
 Here's an example of how to initialize a pointer to a pointer in C:
 
 ```c
@@ -2689,7 +2687,7 @@ int main() {
 > *In this example, we allocate memory for an integer array using malloc, initialize the array, print its values, and then deallocate the memory using free. This step is crucial to prevent memory leaks and efficiently manage memory resources.*
 
 
-[!IMPORTANT]
+> [!IMPORTANT]
 > **Please note that you should always free dynamically allocated memory when you are done using it to avoid memory leaks.**
 
 
