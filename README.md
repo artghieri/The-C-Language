@@ -142,7 +142,7 @@ IF num > 0 THEN                      // The program checks if "num" is greater t
   PRINT ("GIVEN NUMBER IS POSITIVE"  // If checks, outputs the message "GIVEN NUMBER IS POSITIVE".
 ELSE IF num < 0 THEN                 // The program checks if "num" is less than zero
   PRINT ("GIVEN NUMBER IS NEGATIVE"  // If checks, outputs the message "GIVEN NUMBER IS NEGATIVE".
-ELSE                                 // If neither condition checked the program do the following command
+ELSE                                 // If neither condition checked do the following command
   PRINT ("GIVEN NUMBER IS ZERO")     // The program outputs the message "GIVEN NUMBER IS ZERO".
 ENDIF
 END
